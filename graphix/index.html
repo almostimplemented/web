@@ -113,12 +113,12 @@ html, body {
 
 <body onload="webGLStart();" width="100%">
     <canvas id="gl-canvas" style="width: 900; height: 660; float:left"></canvas>
-    <div class="table-responsive" style="height: 40%; float:left;">
+    <div class="table-responsive" style="float:left;">
         <h2 background="black" >Control</h2>
         <table class="table table-bordered">
             <colgroup>
-                <col class="col-xs-2">
-                <col class="col-xs-7">
+                <col class="col-xs-3">
+                <col class="col-xs-5">
             </colgroup>
             <thead>
                 <tr>
@@ -128,49 +128,56 @@ html, body {
             </thead>
             <tbody>
                 <tr>
-                    <th scope="row">
+                    <td>
                         <code>Space</code>
-                    </th>
+                    </td>
                     <td>Zoom In</td>
                 </tr>
                 <tr>
-                    <th scope="row">
+                    <td>
                         <code>Shift + Space</code>
                     </th>
+                    </td>
                     <td>Zoom Out</td>
                 </tr>
                 <tr>
-                    <th scope="row">
+                    <td>
                         <code>Left </code>
                     </th>
+                    </td>
                     <td>Translate left</td>
                 </tr>
                 <tr>
-                    <th scope="row">
+                    <td>
                         <code>Right </code>
                     </th>
+                    </td>
                     <td>Translate right</td>
                 </tr>
                 <tr>
-                    <th scope="row">
+                    <td>
                         <code>Up </code>
-                    </th>
+                    </td>
                     <td>Translate up</td>
                 </tr>
                 <tr>
-                    <th scope="row">
+                    <td>
                         <code>Down </code>
                     </th>
                     <td>Translate down</td>
                 </tr>
                 <tr>
+                    <td>
+                        <code>Reset </code>
+                    </td>
+                    <td>
     <button onclick="resetZoom();">Reset</button>
+                    </td>
                 </tr>
                 <tr>
             </tbody>
         </table>
     </div>
-    <button onclick="resetZoom();">Reset</button>
 </body>
 
 </html>
