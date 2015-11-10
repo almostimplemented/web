@@ -110,7 +110,7 @@ function drawScene() {
     gl.bindBuffer(gl.ARRAY_BUFFER, vertexPositionBuffer);
     gl.vertexAttribPointer(aVertexPosition, vertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);
 
-    if (currentlyPressedKeys[32]) {
+    if (currentlyPressedKeys[32] || currentlyTouching) {
         // Space bar
         if (currentlyPressedKeys[16]) {
             // Shift
@@ -163,6 +163,8 @@ function webGLStart() {
     initBuffers();
     document.onkeydown = handleKeyDown;
     document.onkeyup = handleKeyUp;
+    document.ontouchstart = handleTouchStart;
+    document.ontouchend = handleTouchEnd;
     gl.clearColor(0.0, 0.0, 0.0, 1.0);
     setInterval(drawScene, 15);
     setInterval(handleKeys, 15);
@@ -171,6 +173,7 @@ function webGLStart() {
 
 
 var currentlyPressedKeys = {};
+var currentlyTouching = false;
 
 function handleKeyDown(event) {
     currentlyPressedKeys[event.keyCode] = true;
@@ -201,6 +204,14 @@ function handleKeys() {
     }
 }
 
+handleTouchStart() {
+    currentlyTouching = true;
+}
+
+
+handleTouchEnd() {
+    currentlyTouching = false;
+}
 
 function tick() {
     handleKeys();
