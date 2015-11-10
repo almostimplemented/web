@@ -204,12 +204,12 @@ function handleKeys() {
     }
 }
 
-handleTouchStart() {
+function handleTouchStart() {
     currentlyTouching = true;
 }
 
 
-handleTouchEnd() {
+function handleTouchEnd() {
     currentlyTouching = false;
 }
 
