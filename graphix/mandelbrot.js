@@ -75,6 +75,8 @@ function initShaders() {
 var centerOffsetX = 0;
 var centerOffsetY = 0;
 
+var canX, canY = 0;
+
 var zoom = 1;
 var zoomCenterX;
 var zoomCenterY;
@@ -136,7 +138,7 @@ function drawScene() {
 
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
 
-    gl.deleteBuffer(plotPositionBuffer)
+    gl.deleteBuffer(plotPositionBuffer);
 
     if (centerOffsetX != zoomCenterX) {
         centerOffsetX += (zoomCenterX - centerOffsetX) / 20;
@@ -163,14 +165,13 @@ function webGLStart() {
     initBuffers();
     document.onkeydown = handleKeyDown;
     document.onkeyup = handleKeyUp;
-    document.ontouchstart = handleTouchStart;
-    document.ontouchend = handleTouchEnd;
+    canvas.addEventListener("touchstart", handleTouchStart, false);
+    canvas.addEventListener("touchmove", handleTouchXY, true);
+    canvas.addEventListener("touchend", handleTouchEnd, false);
     gl.clearColor(0.0, 0.0, 0.0, 1.0);
     setInterval(drawScene, 15);
     setInterval(handleKeys, 15);
 }
-
-
 
 var currentlyPressedKeys = {};
 var currentlyTouching = false;
@@ -206,11 +207,24 @@ function handleKeys() {
 
 function handleTouchStart() {
     currentlyTouching = true;
+    handleTouchXY();
 }
 
 
 function handleTouchEnd() {
     currentlyTouching = false;
+}
+
+function handleTouchXY(e) {
+    if (!e)
+        var e = event;
+    e.preventDefault();
+    canX = e.targetTouches[0].pageX - can.offsetLeft;
+    canY = e.targetTouches[0].pageY - can.offsetTop;
+    alert("canvas x: " + canX);
+    alert("canvas y: " + canY);
+    alert("zoomCenterX: " + zoomCenterX);
+    alert("zoomCenterY: " + zoomCenterY);
 }
 
 function tick() {
