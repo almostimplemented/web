@@ -213,8 +213,12 @@ function onLoad() {
     document.onmousemove = function(event) { handleMouseMove(canvas, event);};
     var gl = initWebGL(canvas);
     initBuffers(gl);
-    setInterval(function() {drawScene(gl, canvas);}, 15);
+    tick(gl, canvas);
 }
 
+function tick(gl, canvas) {
+    requestAnimationFrame(function() { tick(gl, canvas); });
+    drawScene(gl, canvas);
+}
 
 
