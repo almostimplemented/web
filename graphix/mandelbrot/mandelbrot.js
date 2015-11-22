@@ -74,7 +74,6 @@ function initShaders() {
 
 var centerOffsetX = 0;
 var centerOffsetY = 0;
-
 var canX, canY = 0;
 
 var zoom = 1;
@@ -210,7 +209,6 @@ function handleTouchStart() {
     handleTouchXY();
 }
 
-
 function handleTouchEnd() {
     currentlyTouching = false;
 }
@@ -227,10 +225,6 @@ function handleTouchXY(e) {
     alert("zoomCenterY: " + zoomCenterY);
 }
 
-function tick() {
-    handleKeys();
-    drawScene();
-}
 function resize(gl) {
   // Get the canvas from the WebGL context
   var canvas = gl.canvas;

@@ -1,183 +1,164 @@
+<!DOCTYPE html>
 <html>
-
     <head>
-        <title>Mandelbrot Set Explorer</title>
-        <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+        <title>WebGL Up and Running &mdash; Example 1</title>
+        <script type="text/javascript" src="ex1.js"></script>
 
-        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <!-- SHADERS -->
+        <script id="mandelbrot-shader-fs" type="x-shader/x-fragment">
+precision mediump float;
+varying vec2 vPosition;
 
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+void main(void) {
+    float cx = vPosition.x;
+    float cy = vPosition.y;
 
-        <!-- Optional theme -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
+    float hue;
+    float saturation;
+    float value;
+    float hueRound;
+    int hueIndex;
+    float f;
+    float p;
+    float q;
+    float t;
 
-        <!-- Latest compiled and minified JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+    float x = 0.0;
+    float y = 0.0;
+    float xsqr = 0.0;
+    float ysqr = 0.0;
+    int i = 0;
+    int runaway = 0;
+    for (int i=0; i < 100; i++) {
+        y = x * y;
+        y += y;
+        y += cy;
+        x = xsqr - ysqr + cx;
+        xsqr = x * x;
+        ysqr = y * y;
+        if (runaway == 0 && xsqr + ysqr > 4.0) {
+            runaway = i;
+        }
+    }
 
-        <script id="shader-fs" type="x-shader/x-fragment">
-            precision mediump float;
+    if (runaway != 0) {
+        hue = float(runaway) / 200.0;
+        saturation = 0.6;
+        value = 1.0;
 
-  varying vec2 vPosition;
+        hueRound = hue * 6.0;
+        hueIndex = int(mod(float(int(hueRound)), 6.0));
+        f = fract(hueRound);
+        p = value * (1.0 - saturation);
+        q = value * (1.0 - f * saturation);
+        t = value * (1.0 - (1.0 - f) * saturation);
 
-  void main(void) {
-      float cx = vPosition.x;
-      float cy = vPosition.y;
+        if (hueIndex == 0)
+        gl_FragColor = vec4(value, t, p, 1.0);
+        else if (hueIndex == 1)
+        gl_FragColor = vec4(q, value, p, 1.0);
+        else if (hueIndex == 2)
+        gl_FragColor = vec4(p, value, t, 1.0);
+        else if (hueIndex == 3)
+        gl_FragColor = vec4(p, q, value, 1.0);
+        else if (hueIndex == 4)
+        gl_FragColor = vec4(t, p, value, 1.0);
+        else if (hueIndex == 5)
+        gl_FragColor = vec4(value, p, q, 1.0);
 
-      float hue;
-      float saturation;
-      float value;
-      float hueRound;
-      int hueIndex;
-      float f;
-      float p;
-      float q;
-      float t;
-
-
-      float x = 0.0;
-      float y = 0.0;
-      float tempX = 0.0;
-      int i = 0;
-      int runaway = 0;
-      for (int i=0; i < 100; i++) {
-          tempX = x * x - y * y + cx;
-          y = 2.0 * x * y + cy;
-          x = tempX;
-          if (runaway == 0 && x * x + y * y > 100.0) {
-              runaway = i;
-          }
-      }
-
-      if (runaway != 0) {
-          hue = float(runaway) / 200.0;
-          saturation = 0.6;
-          value = 1.0;
-
-          hueRound = hue * 6.0;
-          hueIndex = int(mod(float(int(hueRound)), 6.0));
-          f = fract(hueRound);
-          p = value * (1.0 - saturation);
-          q = value * (1.0 - f * saturation);
-          t = value * (1.0 - (1.0 - f) * saturation);
-
-          if (hueIndex == 0)
-              gl_FragColor = vec4(value, t, p, 1.0);
-      else if (hueIndex == 1)
-          gl_FragColor = vec4(q, value, p, 1.0);
-      else if (hueIndex == 2)
-          gl_FragColor = vec4(p, value, t, 1.0);
-      else if (hueIndex == 3)
-          gl_FragColor = vec4(p, q, value, 1.0);
-      else if (hueIndex == 4)
-          gl_FragColor = vec4(t, p, value, 1.0);
-      else if (hueIndex == 5)
-          gl_FragColor = vec4(value, p, q, 1.0);
-
-      } else {
-          gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0);
-      }
-  }
-</script>
-
-<script id="shader-vs" type="x-shader/x-vertex">
-    attribute vec2 aVertexPosition;
-  attribute vec2 aPlotPosition;
-
-  varying vec2 vPosition;
-
-  void main(void) {
-      gl_Position = vec4(aVertexPosition, 1.0, 1.0);
-      vPosition = aPlotPosition;
-  }
-</script>
-
-
-<script type="text/javascript" src="mandelbrot.js">
-</script>
-
-
-<style>
-    /* make the body fill the window */
-html, body {
-    margin: 0px;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background-color:darkgrey;
+        } else {
+        gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0);
+    }
 }
-</style>
+</script>
+        <script id="julia-shader-fs" type="x-shader/x-fragment">
+precision mediump float;
+varying vec2 vPosition;
+uniform float cx;
+uniform float cy;
 
-</head>
 
+void main(void) {
+    float hue;
+    float saturation;
+    float value;
+    float hueRound;
+    int hueIndex;
+    float f;
+    float p;
+    float q;
+    float t;
 
-<body onload="webGLStart();" width="100%">
-    <canvas id="gl-canvas" style="width: 600; height: 440; float:left"></canvas>
-    <div class="table-responsive" style="float:left;">
-        <h2 background="black" >Control</h2>
-        <table class="table table-bordered">
-            <colgroup>
-                <col class="col-xs-1">
-                <col class="col-xs-5">
-            </colgroup>
-            <thead>
-                <tr>
-                    <th>Operation</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <code>Space</code>
-                    </td>
-                    <td>Zoom In</td>
-                </tr>
-                <tr>
-                    <td>
-                        <code>Shift + Space</code>
-                    </th>
-                    </td>
-                    <td>Zoom Out</td>
-                </tr>
-                <tr>
-                    <td>
-                        <code>Left </code>
-                    </th>
-                    </td>
-                    <td>Move left</td>
-                </tr>
-                <tr>
-                    <td>
-                        <code>Right </code>
-                    </th>
-                    </td>
-                    <td>Move right</td>
-                </tr>
-                <tr>
-                    <td>
-                        <code>Up </code>
-                    </td>
-                    <td>Move up</td>
-                </tr>
-                <tr>
-                    <td>
-                        <code>Down </code>
-                    </th>
-                    <td>Move down</td>
-                </tr>
-                <tr>
-                    <td>
-    <button onclick="resetZoom();">Reset</button>
-                    </td>
-                    <td>
-                        Reset to original canvas
-                    </td>
-                </tr>
-                <tr>
-            </tbody>
-        </table>
-    </div>
-</body>
+    float x = vPosition.x;
+    float y = vPosition.y;
+    float xsqr = x * x;
+    float ysqr = y * y;
+    int i = 0;
+    int runaway = 0;
+    for (int i=0; i < 275; i++) {
+        y = x * y;
+        y += y;
+        y += cy;
+        x = xsqr - ysqr + cx;
+        xsqr = x * x;
+        ysqr = y * y;
+        if (runaway == 0 && xsqr + ysqr > 4.0) {
+            runaway = i;
+        }
+    }
 
+    if (runaway != 0) {
+        hue = float(runaway) / 200.0;
+        saturation = 0.6;
+        value = 1.0;
+
+        hueRound = hue * 6.0;
+        hueIndex = int(mod(float(int(hueRound)), 6.0));
+        f = fract(hueRound);
+        p = value * (1.0 - saturation);
+        q = value * (1.0 - f * saturation);
+        t = value * (1.0 - (1.0 - f) * saturation);
+
+        if (hueIndex == 0)
+        gl_FragColor = vec4(value, t, p, 1.0);
+        else if (hueIndex == 1)
+        gl_FragColor = vec4(q, value, p, 1.0);
+        else if (hueIndex == 2)
+        gl_FragColor = vec4(p, value, t, 1.0);
+        else if (hueIndex == 3)
+        gl_FragColor = vec4(p, q, value, 1.0);
+        else if (hueIndex == 4)
+        gl_FragColor = vec4(t, p, value, 1.0);
+        else if (hueIndex == 5)
+        gl_FragColor = vec4(value, p, q, 1.0);
+
+        } else {
+        gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0);
+    }
+}
+            </script>
+
+            <script id="shader-vs" type="x-shader/x-vertex">
+attribute vec2 aVertexPosition;
+attribute vec2 aPlotPosition;
+
+varying vec2 vPosition;
+
+void main(void) {
+    gl_Position = vec4(aVertexPosition, 1.0, 1.0);
+    vPosition = aPlotPosition;
+}
+            </script>
+
+    <style type="text/css">
+        * { 
+           margin: 0;
+           padding: 0;
+       }
+    </style>
+
+    </head>
+    <body onload="onLoad();">
+        <canvas id="webglcanvas" width="1200" height="440"></canvas>
+    </body>
 </html>
