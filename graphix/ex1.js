@@ -111,6 +111,9 @@ function initMandelbrotShaders(gl) {
 
     aPlotPosition = gl.getAttribLocation(shaderProgram, "aPlotPosition");
     gl.enableVertexAttribArray(aPlotPosition);
+
+    gl.uniform1f(gl.getUniformLocation(shaderProgram, "mouse_x"), cx);
+    gl.uniform1f(gl.getUniformLocation(shaderProgram, "mouse_y"), cy);
 }
 
 function initJuliaShaders(gl) {

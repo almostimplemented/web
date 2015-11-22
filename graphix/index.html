@@ -8,10 +8,20 @@
         <script id="mandelbrot-shader-fs" type="x-shader/x-fragment">
 precision mediump float;
 varying vec2 vPosition;
+uniform float mouse_x;
+uniform float mouse_y;
 
 void main(void) {
     float cx = vPosition.x;
     float cy = vPosition.y;
+
+    float dist_x = cx - mouse_x;
+    float dist_y = cy - mouse_y;
+
+    if (dist_x * dist_x + dist_y * dist_y < 0.00009) {
+        gl_FragColor = vec4(0.0, 1.0, 1.0, 0.8);
+        return;
+    } 
 
     float hue;
     float saturation;
@@ -160,5 +170,9 @@ void main(void) {
     </head>
     <body onload="onLoad();">
         <canvas id="webglcanvas" width="1200" height="440"></canvas>
+        <p>
+        Click and drag the blue point within the Mandelbrot set coordinate plane to see the Julia set
+        parametrized by that point.
+        </p>
     </body>
 </html>
