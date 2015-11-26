@@ -15,6 +15,7 @@ var lastMouseX = null;
 var lastMouseY = null;
 var cx = -0.8;
 var cy = 0.156;
+var blip = 0;
 
 function handleMouseDown(canvas, event) {
     if (event.x < canvas.width/2) { return; }
@@ -114,6 +115,7 @@ function initMandelbrotShaders(gl) {
 
     gl.uniform1f(gl.getUniformLocation(shaderProgram, "mouse_x"), cx);
     gl.uniform1f(gl.getUniformLocation(shaderProgram, "mouse_y"), cy);
+    gl.uniform1f(gl.getUniformLocation(shaderProgram, "blip"), blip);
 }
 
 function initJuliaShaders(gl) {
@@ -208,7 +210,9 @@ function drawScene(gl, canvas) {
     initMandelbrotShaders(gl);
     drawInViewport(gl, function() { draw(gl, mandelbrotBaseCorners); }, canvas.width/2, 0, canvas.width/2, canvas.height);
 }
-      
+     
+
+var first;
 function onLoad() {
     var canvas = document.getElementById("webglcanvas");
     canvas.onmousedown = function(event) { handleMouseDown(canvas, event);};
@@ -216,12 +220,22 @@ function onLoad() {
     document.onmousemove = function(event) { handleMouseMove(canvas, event);};
     var gl = initWebGL(canvas);
     initBuffers(gl);
+    first = true;
     tick(gl, canvas);
 }
 
 function tick(gl, canvas) {
+    //if (first || mouseDown) {
+        drawScene(gl, canvas);
+    //}
+    if (!mouseDown) {
+        if (blip > 3.0) {
+            blip = 0.0;
+        } else {
+            blip += 0.1;
+        }
+    } else {
+        blip = 1.0;
+    }
     requestAnimationFrame(function() { tick(gl, canvas); });
-    drawScene(gl, canvas);
 }
-
-

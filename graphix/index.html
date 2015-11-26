@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>Julia &mdash; Mandelbrot</title>
-        <script type="text/javascript" src="ex1.js"></script>
+        <script type="text/javascript" src="fractal.js"></script>
 
         <!-- SHADERS -->
         <script id="mandelbrot-shader-fs" type="x-shader/x-fragment">
@@ -10,6 +10,7 @@ precision mediump float;
 varying vec2 vPosition;
 uniform float mouse_x;
 uniform float mouse_y;
+uniform float blip;
 
 void main(void) {
     float cx = vPosition.x;
@@ -18,7 +19,8 @@ void main(void) {
     float dist_x = cx - mouse_x;
     float dist_y = cy - mouse_y;
 
-    if (dist_x * dist_x + dist_y * dist_y < 0.00009) {
+    if (dist_x * dist_x + dist_y * dist_y < 0.0002 * blip) {
+    //if (dist_x * dist_x + dist_y * dist_y > 0.00005 * blip && dist_x * dist_x + dist_y * dist_y < 0.0002 * blip) {
         gl_FragColor = vec4(0.0, 1.0, 1.0, 0.8);
         return;
     } 
@@ -166,7 +168,6 @@ void main(void) {
            padding: 0;
        }
     </style>
-
     </head>
     <body onload="onLoad();">
         <canvas id="webglcanvas" width="1200" height="440"></canvas>
