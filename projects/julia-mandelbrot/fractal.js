@@ -221,7 +221,7 @@ function onLoad() {
     document.onmouseup = handleMouseUp;
     document.ontouchend = handleMouseUp;
     document.onmousemove = function(event) { handleMouseMove(canvas, event);};
-    document.ontouchmove = function(event) { handleMouseMove(canvas, event);};
+    document.ontouchmove = function(event) { event.preventDefault(); handleMouseMove(canvas, event);};
     var gl = initWebGL(canvas);
     initBuffers(gl);
     first = true;
