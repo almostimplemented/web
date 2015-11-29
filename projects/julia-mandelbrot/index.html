@@ -48,7 +48,7 @@ void main(void) {
         x = xsqr - ysqr + cx;
         xsqr = x * x;
         ysqr = y * y;
-        if (runaway == 0 && xsqr + ysqr > 4.0) {
+        if (runaway == 0 && xsqr + ysqr >= 4.0) {
             runaway = i;
         }
     }
