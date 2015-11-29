@@ -215,17 +215,25 @@ function drawScene(gl, canvas) {
 var first;
 function onLoad() {
     var canvas = document.getElementById("webglcanvas");
-    if (window.innerWidth < 1200) {
-        canvas.width = 600;
-        canvas.height = 220;
-    }
+    setSize(canvas);
     canvas.onmousedown = function(event) { handleMouseDown(canvas, event);};
+    canvas.ontouchstart = function(event) { handleMouseDown(canvas, event);};
     document.onmouseup = handleMouseUp;
+    document.ontouchend = handleMouseUp;
     document.onmousemove = function(event) { handleMouseMove(canvas, event);};
+    document.ontouchmove = function(event) { handleMouseMove(canvas, event);};
     var gl = initWebGL(canvas);
     initBuffers(gl);
     first = true;
     tick(gl, canvas);
+}
+
+function setSize(canvas) {
+    canvas.width = Math.floor(window.innerWidth / 30) * 30;
+    canvas.height = 11 * Math.floor(window.innerWidth / 30);
+    if (canvas.height % 2 == 1) {
+        canvas.height -= 1;
+    }
 }
 
 function tick(gl, canvas) {
