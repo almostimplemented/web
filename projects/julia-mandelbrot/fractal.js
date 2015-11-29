@@ -217,7 +217,7 @@ function onLoad() {
     var canvas = document.getElementById("webglcanvas");
     if (window.innerWidth < 1200) {
         canvas.width = 600;
-        canvas.height = (canvas.width / 2 ) * (11.0 / 15.0);
+        canvas.height = 220;
     }
     canvas.onmousedown = function(event) { handleMouseDown(canvas, event);};
     document.onmouseup = handleMouseUp;
