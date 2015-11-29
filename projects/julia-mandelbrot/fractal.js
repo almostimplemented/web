@@ -217,7 +217,7 @@ function onLoad() {
     var canvas = document.getElementById("webglcanvas");
     setSize(canvas);
     canvas.onmousedown = function(event) { handleMouseDown(canvas, event);};
-    canvas.ontouchstart = function(event) { handleMouseDown(canvas, event);};
+    canvas.ontouchstart = function(event) { event.preventDefault(); handleMouseDown(canvas, event);};
     document.onmouseup = handleMouseUp;
     document.ontouchend = handleMouseUp;
     document.onmousemove = function(event) { handleMouseMove(canvas, event);};
