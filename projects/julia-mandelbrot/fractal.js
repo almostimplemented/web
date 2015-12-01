@@ -14,7 +14,7 @@ var mouseDown = false;
 var lastMouseX = null;
 var lastMouseY = null;
 var cx = -0.8;
-var cy = 0.156;
+var cy = -0.156;
 var blip = 0;
 
 function handleMouseDown(canvas, event) {
@@ -217,11 +217,8 @@ function onLoad() {
     var canvas = document.getElementById("webglcanvas");
     setSize(canvas);
     canvas.onmousedown = function(event) { handleMouseDown(canvas, event);};
-    canvas.ontouchstart = function(event) { event.preventDefault(); handleMouseDown(canvas, event);};
     document.onmouseup = handleMouseUp;
-    document.ontouchend = handleMouseUp;
     document.onmousemove = function(event) { handleMouseMove(canvas, event);};
-    document.ontouchmove = function(event) { event.preventDefault(); handleMouseMove(canvas, event);};
     var gl = initWebGL(canvas);
     initBuffers(gl);
     first = true;
@@ -236,6 +233,7 @@ function setSize(canvas) {
     }
 }
 
+var t = 0;
 function tick(gl, canvas) {
     //if (first || mouseDown) {
         drawScene(gl, canvas);
