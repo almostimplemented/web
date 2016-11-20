@@ -7,7 +7,7 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css" rel="stylesheet">
     <link href="/css/theme.css" rel="stylesheet">
-    <link href="/css/transition.css" rel="stylesheet" >
+    <link href="/css/transition.css" rel="stylesheet">
     <script src="https://use.fontawesome.com/96860ac8bb.js"></script>
     <style>
         /* make the body fill the window */
@@ -17,137 +17,136 @@
             margin: 0px;
             width: 100%;
             height: 100%;
-            overflow: hidden;
         }
+
     </style>
 </head>
 
 <body onload="webGLStart();">
-    <div class="container theme-showcase" role="main">
-                <div class="jumbotron scene_element scene_element--fadein">
-                    <h1>Projects</h1>
-                    <p>
-                    Selected demos of my side projects.
-                    </p>
-                </div>
-                        <nav class="navbar navbar-default">
-                    <div class="container-fluid">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" 
-                                    data-target="#navbar-collapse" aria-expanded="false">
+    <div class="container" role="main">
+        <div class="jumbotron scene_element scene_element--fadein">
+            <h1>Projects</h1>
+            <p>
+                Selected demos of my side projects.
+            </p>
+        </div>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a class="navbar-brand" href="/">
-                                <span class="glyphicon glyphicon-font"></span><span class="glyphicon glyphicon-italic"></span>
+                    <a class="navbar-brand" href="/">
+                        <span class="glyphicon glyphicon-font"></span><span class="glyphicon glyphicon-italic"></span>
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="https://blog.almostimplemented.com">Blog</a>
+                        </li>
+                        <li>
+                            <a href="/music">Music</a>
+                        </li>
+                        <li class="active">
+                            <a href="/projects">Projects</a>
+                        </li>
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a class="no-smoothState" href="https://www.linkedin.com/in/almostimplemented">
+                                <span class="fa fa-linkedin-square fa-lg"></span>
                             </a>
-                        </div>
-                        <div class="collapse navbar-collapse" id="navbar-collapse">
-                            <ul class="nav navbar-nav">
-                                <li>
-                                    <a href="https://blog.almostimplemented.com">Blog</a>
-                                </li>
-                                <li>
-                                    <a href="/music">Music</a>
-                                </li>
-                                <li class="active">
-                                    <a href="/projects">Projects</a>
-                                </li>
-                            </ul>
-                            
-                            <ul class="nav navbar-nav navbar-right">
-                                <li>
-                                    <a class="no-smoothState" href="https://www.linkedin.com/in/almostimplemented">
-                                        <span class="fa fa-linkedin-square fa-lg"></span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="no-smoothState" href="https://www.github.com/almostimplemented">
-                                        <span class="fa fa-github fa-lg"></span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="no-smoothState" href="./resources/cv.pdf">
-                                        <span class="fa fa-address-card fa-lg"></span>
-                                    </a>
-                                </li>
-                            </ul>
+                        </li>
+                        <li>
+                            <a class="no-smoothState" href="https://www.github.com/almostimplemented">
+                                <span class="fa fa-github fa-lg"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="no-smoothState" href="./resources/cv.pdf">
+                                <span class="fa fa-address-card fa-lg"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <canvas id="gl-canvas" style="width: 95%;"></canvas>
+                </div>
+                <div class="col-md-4">
+                    <div class="table-responsive" style="width: 95%;">
+                        <button id="toggle-controls" type="button" class="btn btn-default btn-lg btn-block">Controls</button>
+                        <div id="controls" class="container-fluid collapse">
+                            <table class="table table-bordered">
+                                <colgroup>
+                                    <col class="col-xs-3">
+                                    <col class="col-xs-4">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th>Operation</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <code>Space</code>
+                                        </td>
+                                        <td>Zoom In</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <code>Shift + Space</code>
+                                        </td>
+                                        <td>Zoom Out</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <code>Left </code>
+                                        </td>
+                                        <td>Move left</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <code>Right </code>
+                                        </td>
+                                        <td>Move right</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <code>Up </code>
+                                        </td>
+                                        <td>Move up</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <code>Down </code>
+                                            <td>Move down</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <button onclick="resetZoom();">Reset</button>
+                                        </td>
+                                        <td>
+                                            Reset to original canvas
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-                </nav>
-    <div class="row">
-        <div class="col-md-8">
-    <canvas id="gl-canvas" style="width: 64%; float:left;"></canvas>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-8">
-        <div class="table-responsive" style="width: 64%; float:left;">
-            <button id="toggle-controls" type="button" class="btn btn-default btn-lg btn-block">Controls</button>
-            <div id="controls" class="container-fluid collapse">
-            <table class="table table-bordered">
-                <colgroup>
-                    <col class="col-xs-3">
-                    <col class="col-xs-4">
-                </colgroup>
-                <thead>
-                    <tr>
-                        <th>Operation</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <code>Space</code>
-                        </td>
-                        <td>Zoom In</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <code>Shift + Space</code>
-                        </td>
-                        <td>Zoom Out</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <code>Left </code>
-                        </td>
-                        <td>Move left</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <code>Right </code>
-                        </td>
-                        <td>Move right</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <code>Up </code>
-                        </td>
-                        <td>Move up</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <code>Down </code>
-                            <td>Move down</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <button onclick="resetZoom();">Reset</button>
-                        </td>
-                        <td>
-                            Reset to original canvas
-                        </td>
-                    </tr>
-                    <tr>
-                </tbody>
-            </table>
+                </div>
             </div>
         </div>
-        </div>
-    </div>
     </div>
 </body>
 
@@ -188,8 +187,8 @@
           }
           if (runaway != 0) {
               hue = float(runaway) / 200.0;
-              saturation = 0.5;
-              value = 0.95;
+              saturation = 0.4;
+              value = 1.0;
               hueRound = hue * 6.0;
               hueIndex = int(mod(float(int(hueRound)), 6.0));
               f = fract(hueRound);
@@ -227,16 +226,19 @@
       }
     </script>
     <script type="text/javascript" src="mandelbrot.js">
-    </script>
-    <script type="text/javascript">
-        var canvas = document.getElementById("gl-canvas");
-        canvas.height = canvas.width * 0.7;
-        $(document).ready(function(){
-            $("#toggle-controls").click(function(){
-                $("#controls").collapse("toggle");
-            });
+    
+</script>
+<script type="text/javascript">
+    var canvas = document.getElementById("gl-canvas");
+    canvas.height = canvas.width * 0.7;
+    $(document).ready(function() {
+        $("#toggle-controls").click(function() {
+            $("#controls").collapse("toggle");
         });
-    </script>
-        <script src="/js/jquery.smoothState.js"></script>
-        <script src="/js/main.js"></script>
+    });
+
+</script>
+<script src="/js/jquery.smoothState.js"></script>
+<script src="/js/main.js"></script>
+
 </html>
