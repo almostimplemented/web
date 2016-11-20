@@ -6,6 +6,7 @@ $(function(){
         prefetch: true,
         cacheLength: 2,
         forms: 'form',
+        blacklist: '.no-smoothState',
         onStart: {
           duration: 750, // Duration of our animation
           render: function ($container) {
