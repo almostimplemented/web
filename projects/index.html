@@ -7,11 +7,14 @@
         <title>Projects</title>
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" rel="stylesheet" >
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css" rel="stylesheet">
+		<link href="../css/transition.css" rel="stylesheet" >
         <link href="../css/theme.css" rel="stylesheet" >
     </head>
         <body>
+            <div class="projects m-scene" id="main">
             <div class="container theme-showcase" role="main">
-                <div class="jumbotron">
+                <div class="jumbotron scene_element scene_element--fadein">
                     <h1>Projects</h1>
                     <p>
                     Selected demos of my side projects.
@@ -37,7 +40,7 @@
                         </div>
                     </div>
                 </nav>
-                <div class="container-fluid">
+                <div class="container-fluid scene_element scene_element--fadeinup">
                     <ul>
                         <li>
                             <a href="mandelbrot">Mandelbrot Set Explorer</a>
@@ -48,9 +51,10 @@
                     </ul>
                 </div>
             </div>
+            </div>
         </body>
-		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<!-- Latest compiled and minified JavaScript -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="../js/jquery.smoothState.js"></script>
+        <script src="../js/main.js"></script>
 </html>
