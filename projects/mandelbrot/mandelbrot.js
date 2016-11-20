@@ -108,7 +108,7 @@ function drawScene() {
     gl.bindBuffer(gl.ARRAY_BUFFER, vertexPositionBuffer);
     gl.vertexAttribPointer(aVertexPosition, vertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);
 
-    if (currentlyPressedKeys[32] || currentlyTouching) {
+    if (currentlyPressedKeys[90] || currentlyTouching) {
         // Space bar
         if (currentlyPressedKeys[16]) {
             // Shift
@@ -183,19 +183,19 @@ function handleKeyUp(event) {
 
 
 function handleKeys() {
-    if (currentlyPressedKeys[37]) {
+    if (currentlyPressedKeys[65]) {
         // Left cursor key
         zoomCenterX -= 0.01/zoom;
     }
-    if (currentlyPressedKeys[39]) {
+    if (currentlyPressedKeys[68]) {
         // Right cursor key
         zoomCenterX += 0.01/zoom;
     }
-    if (currentlyPressedKeys[38]) {
+    if (currentlyPressedKeys[87]) {
         // Up cursor key
         zoomCenterY += 0.01/zoom;
     }
-    if (currentlyPressedKeys[40]) {
+    if (currentlyPressedKeys[83]) {
         // Down cursor key
         zoomCenterY -= 0.01/zoom;
     }
