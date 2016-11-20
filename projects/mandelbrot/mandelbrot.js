@@ -94,9 +94,6 @@ function initBuffers() {
     vertexPositionBuffer.itemSize = 2;
     vertexPositionBuffer.numItems = 4;
 }
-
-
-
 var baseCorners = [
     [ 0.7,  1.2],
     [-2.2,  1.2],
