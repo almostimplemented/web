@@ -1,0 +1,46 @@
+name: Deploy
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+      DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+      DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check secrets
+        run: |
+          if [ -z "$DEPLOY_SSH_KEY" ] || [ -z "$DEPLOY_USER" ]; then
+            echo "::warning::DEPLOY_SSH_KEY and DEPLOY_USER secrets are not set; skipping deploy."
+            echo "skip=true" >> "$GITHUB_ENV"
+          fi
+
+      - name: Load deploy key
+        if: env.skip != 'true'
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "$DEPLOY_SSH_KEY" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          echo "# almostimplemented.com:22 SSH-2.0-OpenSSH_6.6.1
+almostimplemented.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMrE5Ze2CjkQoXTt7FJePzrfA1VwSvcBUkKQlG6Vk/7V" >> ~/.ssh/known_hosts
+
+      - name: Deploy
+        if: env.skip != 'true'
+        run: ./deploy.sh "$DEPLOY_USER@almostimplemented.com" "$DEPLOY_PATH"
+
+      - name: Verify
+        if: env.skip != 'true'
+        run: |
+          sleep 2
+          curl -sSf https://almostimplemented.com/ | grep -q 'Almost<i> Implemented</i>' && echo "Live site responds with the new page."
