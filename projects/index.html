@@ -18,7 +18,7 @@
                 <div class="jumbotron scene_element scene_element--fadein">
                     <h1>Projects</h1>
                     <p>
-                    Selected demos of my side projects.
+                    Things I have built, and keep building.
                     </p>
                 </div>
                 <nav class="navbar navbar-default">
@@ -76,27 +76,76 @@
                     </div>
                 </nav>
                 <div class="container-fluid scene_element scene_element--fadeinup">
-                    <ul>
-                        <li>
-                            <a class="no-smoothState" href="https://flattensf.com/">Flatten SF</a>
-                            &mdash; the flattest route between any two points in San Francisco, computed in your browser across 160,000 street segments
-                            (<a class="no-smoothState" href="https://github.com/almostimplemented/flattensf">code and analysis</a>,
-                            <a class="no-smoothState" href="https://news.ycombinator.com/item?id=49971230">Hacker News</a>)
-                        </li>
-                        <li>
-                            <a class="no-smoothState" href="https://github.com/almostimplemented/PiJAMA">PiJAMA</a>
-                            &mdash; 200+ hours of solo jazz piano MIDI, automatically transcribed from thousands of recordings
-                        </li>
-                        <li>
-                            <a class="no-smoothState" href="https://github.com/almostimplemented/piano-capture">piano-capture</a>
-                            &mdash; synchronized MIDI playback and audio capture for building aligned transcription data
-                        </li>
-                        <li>
-                            <a class="no-smoothState" href="https://github.com/almostimplemented/checkers">checkers</a>
-                            &mdash; Arthur Samuel's checkers-learning program, in Python
-                        </li>
-                    </ul>
-
+                    <div class="row entry">
+                        <div class="col-sm-4">
+                            <a class="no-smoothState" href="https://flattensf.com/"><img class="img-responsive thumb" src="/img/flattensf.jpg" alt="Flatten SF route finder"></a>
+                        </div>
+                        <div class="col-sm-8">
+                            <h4><a class="no-smoothState" href="https://flattensf.com/">Flatten SF</a></h4>
+                            <p>
+                                The flattest route between any two points in San Francisco. Pick a start and an end, then slide from the shortest route to the flattest one; every route on the slider is one that nothing else beats on both distance and climbing.
+                                Routing runs in your browser across 160,000 street segments, with elevation from USGS 1-meter lidar.
+                            </p>
+                            <p>
+                                The analysis behind it maps the city's hidden network of flat streets. The Wiggle falls out of the algorithm on its own, and a handful of passes over Golden Gate Park and around Twin Peaks decide most east&ndash;west trips.
+                            </p>
+                            <p class="links">
+                                <a class="no-smoothState" href="https://flattensf.com/">flattensf.com</a> &middot;
+                                <a class="no-smoothState" href="https://github.com/almostimplemented/flattensf">code and analysis</a> &middot;
+                                <a class="no-smoothState" href="https://news.ycombinator.com/item?id=49971230">Hacker News</a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row entry">
+                        <div class="col-sm-4">
+                            <a class="no-smoothState" href="https://github.com/almostimplemented/PiJAMA"><img class="img-responsive thumb" src="/img/pijama.png" alt="Hours of audio per pianist in PiJAMA"></a>
+                        </div>
+                        <div class="col-sm-8">
+                            <h4><a class="no-smoothState" href="https://github.com/almostimplemented/PiJAMA">PiJAMA</a></h4>
+                            <p>
+                                Piano Jazz with Automatic MIDI Annotations: 200+ hours of solo jazz piano, automatically transcribed to MIDI from thousands of recordings.
+                                The accompanying paper measures how reliable the transcriptions are and what the data reveal about the pianists. It is the training data for the jazz pianist style work.
+                            </p>
+                            <p class="links">
+                                <a class="no-smoothState" href="https://github.com/almostimplemented/PiJAMA">dataset</a> &middot;
+                                <a class="no-smoothState" href="https://doi.org/10.5334/tismir.162">paper (TISMIR 2023)</a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row entry">
+                        <div class="col-sm-4">
+                            <a class="no-smoothState" href="https://github.com/almostimplemented/piano-capture"><img class="img-responsive thumb" src="/img/piano-capture-studio.jpg" alt="Disklavier recording session with microphones and a laptop running piano-capture"></a>
+                        </div>
+                        <div class="col-sm-8">
+                            <h4><a class="no-smoothState" href="https://github.com/almostimplemented/piano-capture">piano-capture</a></h4>
+                            <p>
+                                Synchronized MIDI playback and audio capture. Point it at a folder of MIDI files and a player piano such as a Yamaha Disklavier, and it performs each file while recording the audio, producing aligned audio&ndash;MIDI pairs for transcription research.
+                                It made the studio re-recordings of MAESTRO behind our robust piano transcription paper.
+                            </p>
+                            <p>
+                                Other labs use it too. Gerhard Widmer's group at JKU Linz recorded their Musical Distribution Shift corpus with it for
+                                <a class="no-smoothState" href="https://link.springer.com/article/10.1186/s13636-025-00428-z">Sound and music biases in deep music transcription models</a>
+                                (Mart&aacute;k, Hu, and Widmer, EURASIP Journal on Audio, Speech, and Music Processing, 2025).
+                            </p>
+                            <p class="links">
+                                <a class="no-smoothState" href="https://github.com/almostimplemented/piano-capture">code</a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row entry">
+                        <div class="col-sm-4">
+                            <a class="no-smoothState" href="https://github.com/almostimplemented/checkers"><img class="img-responsive thumb" src="/img/checkers.svg" alt="Checkers board"></a>
+                        </div>
+                        <div class="col-sm-8">
+                            <h4><a class="no-smoothState" href="https://github.com/almostimplemented/checkers">checkers</a></h4>
+                            <p>
+                                A simple checkers program in Python, modeled on Arthur Samuel's famous self-learning player from 1959. An old favorite from before the PhD.
+                            </p>
+                            <p class="links">
+                                <a class="no-smoothState" href="https://github.com/almostimplemented/checkers">code</a>
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
             </div>

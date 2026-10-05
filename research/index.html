@@ -76,53 +76,107 @@
                     </div>
                 </nav>
                 <div class="container-fluid scene_element scene_element--fadeinup">
-                    <h3>Learning Jazz Pianist Style with Cross-Attention Conditioning</h3>
-                    <p>Drew Edwards, Akira Maezawa, Simon Dixon. ISMIR 2026, Abu Dhabi.</p>
-                    <p>
-                        Can a model learn not just to recognize who is playing, but to play in their manner?
-                        We fine-tune a transformer pretrained on piano MIDI on solo recordings of twelve jazz pianists, adding cross-attention over learned pianist embeddings.
-                        Conditioned continuations are attributed to the intended pianist 70% of the time, against 37% without conditioning.
-                    </p>
-                    <p>
-                        <a class="no-smoothState" href="https://almostimplemented.github.io/jazz-pianist-style/">Audio demos</a> &middot;
-                        <a class="no-smoothState" href="https://arxiv.org/abs/2610.02918">arXiv</a> &middot;
-                        <a class="no-smoothState" href="https://github.com/almostimplemented/jazz-pianist-style">Code</a>
-                    </p>
+                    <div class="featured">
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <a class="no-smoothState" href="https://almostimplemented.github.io/jazz-pianist-style/"><img class="img-responsive" src="/img/jazz-pianist-style.jpg" alt="Most and least characteristic passages of an Art Tatum performance"></a>
+                            </div>
+                            <div class="col-sm-7">
+                                <h3><a class="no-smoothState" href="https://almostimplemented.github.io/jazz-pianist-style/">Learning Jazz Pianist Style with Cross-Attention Conditioning</a></h3>
+                                <p>Drew Edwards, Akira Maezawa, Simon Dixon. ISMIR 2026, Abu Dhabi.</p>
+                                <p>
+                                    Can a model learn not just to recognize who is playing, but to play in their manner?
+                                    We fine-tune a transformer pretrained on piano MIDI on solo recordings of twelve jazz pianists, adding cross-attention over learned pianist embeddings.
+                                    Conditioned continuations are attributed to the intended pianist 70% of the time, against 37% without conditioning, and the same classifier can point to the most characteristic moments in a performance.
+                                </p>
+                                <p>
+                                    <a class="no-smoothState" href="https://almostimplemented.github.io/jazz-pianist-style/">Audio demos</a> &middot;
+                                    <a class="no-smoothState" href="https://arxiv.org/abs/2610.02918">arXiv</a> &middot;
+                                    <a class="no-smoothState" href="https://github.com/almostimplemented/jazz-pianist-style">Code</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                     <h3>Publications</h3>
-                    <ul>
-                        <li>
-                            <a class="no-smoothState" href="https://arxiv.org/abs/2610.02918">Learning Jazz Pianist Style with Cross-Attention Conditioning</a>.
-                            Edwards, Maezawa, Dixon. ISMIR 2026.
-                        </li>
-                        <li>
-                            <a class="no-smoothState" href="https://arxiv.org/abs/2408.05024">MIDI-to-Tab: Guitar Tablature Inference via Masked Language Modeling</a>.
-                            Edwards, Riley, Sarmento, Dixon. ISMIR 2024.
-                        </li>
-                        <li>
-                            <a class="no-smoothState" href="https://arxiv.org/abs/2408.08653">GAPS: A Large and Diverse Classical Guitar Dataset and Benchmark Transcription Model</a>.
-                            Riley, Guo, Edwards, Dixon. ISMIR 2024.
-                        </li>
-                        <li>
-                            <a class="no-smoothState" href="https://doi.org/10.1109/LSP.2024.3363646">A Data-Driven Analysis of Robust Automatic Piano Transcription</a>.
-                            Edwards, Dixon, Benetos, Maezawa, Kusaka. IEEE Signal Processing Letters, 2024.
-                            (<a class="no-smoothState" href="https://arxiv.org/abs/2402.01424">arXiv</a>)
-                        </li>
-                        <li>
-                            <a class="no-smoothState" href="https://doi.org/10.1109/ICASSP48485.2024.10446182">High Resolution Guitar Transcription via Domain Adaptation</a>.
-                            Riley, Edwards, Dixon. ICASSP 2024.
-                            (<a class="no-smoothState" href="https://arxiv.org/abs/2402.15258">arXiv</a>)
-                        </li>
-                        <li>
-                            <a class="no-smoothState" href="https://doi.org/10.5334/tismir.162">PiJAMA: Piano Jazz with Automatic MIDI Annotations</a>.
-                            Edwards, Dixon, Benetos. Transactions of the ISMIR, 2023.
-                            (<a class="no-smoothState" href="https://github.com/almostimplemented/PiJAMA">dataset</a>)
-                        </li>
-                    </ul>
+                    <div class="row entry">
+                        <div class="col-sm-3">
+                            <a class="no-smoothState" href="https://arxiv.org/abs/2408.05024"><img class="img-responsive thumb short" src="/img/paper-2408.05024.jpg" alt="MIDI-to-Tab paper"></a>
+                        </div>
+                        <div class="col-sm-9">
+                            <h4><a class="no-smoothState" href="https://arxiv.org/abs/2408.05024">MIDI-to-Tab: Guitar Tablature Inference via Masked Language Modeling</a></h4>
+                            <p>Edwards, Riley, Sarmento, Dixon. ISMIR 2024.</p>
+                            <p>
+                                An encoder&ndash;decoder Transformer that assigns a string and fret to every note of a guitar performance, trained as masked language modeling: pretrained on 25,000 DadaGP tablatures, then fine-tuned on professionally transcribed performances.
+                                In a user study, guitarists rated its tablature above competing systems.
+                            </p>
+                            <p class="links"><a class="no-smoothState" href="https://arxiv.org/abs/2408.05024">arXiv</a></p>
+                        </div>
+                    </div>
+                    <div class="row entry">
+                        <div class="col-sm-3">
+                            <a class="no-smoothState" href="https://arxiv.org/abs/2408.08653"><img class="img-responsive thumb short" src="/img/paper-2408.08653.jpg" alt="GAPS paper"></a>
+                        </div>
+                        <div class="col-sm-9">
+                            <h4><a class="no-smoothState" href="https://arxiv.org/abs/2408.08653">GAPS: A Large and Diverse Classical Guitar Dataset and Benchmark Transcription Model</a></h4>
+                            <p>Riley, Guo, Edwards, Dixon. ISMIR 2024.</p>
+                            <p>
+                                Guitar-Aligned Performance Scores: 14 hours of classical guitar recordings from over 200 performers, aligned to scores with note-level MIDI, plus a benchmark transcription model that generalizes to unseen real-world audio.
+                            </p>
+                            <p class="links"><a class="no-smoothState" href="https://arxiv.org/abs/2408.08653">arXiv</a></p>
+                        </div>
+                    </div>
+                    <div class="row entry">
+                        <div class="col-sm-3">
+                            <a class="no-smoothState" href="https://doi.org/10.1109/LSP.2024.3363646"><img class="img-responsive thumb short" src="/img/paper-2402.01424.jpg" alt="Robust piano transcription paper"></a>
+                        </div>
+                        <div class="col-sm-9">
+                            <h4><a class="no-smoothState" href="https://doi.org/10.1109/LSP.2024.3363646">A Data-Driven Analysis of Robust Automatic Piano Transcription</a></h4>
+                            <p>Edwards, Dixon, Benetos, Maezawa, Kusaka. IEEE Signal Processing Letters, 2024.</p>
+                            <p>
+                                Piano transcription models overfit to the acoustics of their training data. We re-recorded the MAESTRO dataset on a Yamaha Disklavier in a studio and trained with data augmentation, reaching state-of-the-art note-onset accuracy on MAPS without seeing any of its training data.
+                            </p>
+                            <p class="links">
+                                <a class="no-smoothState" href="https://doi.org/10.1109/LSP.2024.3363646">paper</a> &middot;
+                                <a class="no-smoothState" href="https://arxiv.org/abs/2402.01424">arXiv</a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row entry">
+                        <div class="col-sm-3">
+                            <a class="no-smoothState" href="https://doi.org/10.1109/ICASSP48485.2024.10446182"><img class="img-responsive thumb short" src="/img/paper-2402.15258.jpg" alt="High resolution guitar transcription paper"></a>
+                        </div>
+                        <div class="col-sm-9">
+                            <h4><a class="no-smoothState" href="https://doi.org/10.1109/ICASSP48485.2024.10446182">High Resolution Guitar Transcription via Domain Adaptation</a></h4>
+                            <p>Riley, Edwards, Dixon. ICASSP 2024.</p>
+                            <p>
+                                Aligning scores to commercially available guitar recordings yields training data for an instrument that has little of it. Fine-tuning a high-resolution piano transcription model on that data set a new state of the art on GuitarSet, zero-shot.
+                            </p>
+                            <p class="links">
+                                <a class="no-smoothState" href="https://doi.org/10.1109/ICASSP48485.2024.10446182">paper</a> &middot;
+                                <a class="no-smoothState" href="https://arxiv.org/abs/2402.15258">arXiv</a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row entry">
+                        <div class="col-sm-3">
+                            <a class="no-smoothState" href="https://doi.org/10.5334/tismir.162"><img class="img-responsive thumb short" src="/img/pijama.png" alt="Hours of audio per pianist in PiJAMA"></a>
+                        </div>
+                        <div class="col-sm-9">
+                            <h4><a class="no-smoothState" href="https://doi.org/10.5334/tismir.162">PiJAMA: Piano Jazz with Automatic MIDI Annotations</a></h4>
+                            <p>Edwards, Dixon, Benetos. Transactions of the ISMIR, 2023.</p>
+                            <p>
+                                200+ hours of solo jazz piano, automatically transcribed to MIDI from thousands of recordings, with an analysis of how reliable the transcriptions are and what the data show about the pianists.
+                            </p>
+                            <p class="links">
+                                <a class="no-smoothState" href="https://doi.org/10.5334/tismir.162">paper</a> &middot;
+                                <a class="no-smoothState" href="https://github.com/almostimplemented/PiJAMA">dataset</a>
+                            </p>
+                        </div>
+                    </div>
                     <p>
                         Thesis in progress: <i>Modeling Jazz Piano: Symbolic Music Generation via Large-scale Automatic Transcription</i>, supervised by Simon Dixon and Emmanouil Benetos at the Centre for Digital Music, Queen Mary University of London.
                         Full list on <a class="no-smoothState" href="https://scholar.google.com/citations?user=GD92NW4AAAAJ">Google Scholar</a>.
                     </p>
-
                 </div>
             </div>
             </div>
