@@ -1,8 +1,10 @@
 $(function(){
   'use strict';
+  // Fetch pages fresh when navigating, so a cached old copy never comes back.
+  $.ajaxSetup({ cache: false });
   var $page = $('#main'),
       options = {
-        debug: true,
+        debug: false,
         prefetch: true,
         cacheLength: 2,
         forms: 'form',
