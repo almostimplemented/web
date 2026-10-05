@@ -4,7 +4,6 @@ Personal site for Drew Edwards. Plain static HTML, Bootstrap 3 from CDN, no buil
 
 - `index.html` is the entry page: the jumbotron intro and a nav bar.
 - `research/`, `projects/`, `music/` are the sub-pages, all sharing the same header and nav.
-- `projects/mandelbrot/` and `projects/julia-mandelbrot/` are standalone WebGL demos.
 - `css/theme.css`, `css/transition.css`, and `js/` hold the small amount of shared styling and the page-transition script.
 - `resources/cv.pdf` is a 2017 CV kept so old links don't break. It is no longer linked from the site.
 

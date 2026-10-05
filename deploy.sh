@@ -40,5 +40,5 @@ rsync -avz -e "ssh ${SSH_OPTS[*]}" \
   ./ "$HOST:$REMOTE_PATH/"
 
 # Leftovers from the old shared host that the new site no longer ships.
-ssh "${SSH_OPTS[@]}" "$HOST" "cd '$REMOTE_PATH' && rm -f 400.shtml 401.shtml 403.shtml 500.shtml 500.php error_log default.html"
+ssh "${SSH_OPTS[@]}" "$HOST" "cd '$REMOTE_PATH' && rm -f 400.shtml 401.shtml 403.shtml 500.shtml 500.php error_log default.html css/site.css && rm -rf projects/mandelbrot projects/julia-mandelbrot"
 echo "Done: https://almostimplemented.com/"
