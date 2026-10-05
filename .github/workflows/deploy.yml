@@ -32,8 +32,7 @@ jobs:
           mkdir -p ~/.ssh
           printf '%s\n' "$DEPLOY_SSH_KEY" > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
-          echo "# almostimplemented.com:22 SSH-2.0-OpenSSH_6.6.1
-almostimplemented.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMrE5Ze2CjkQoXTt7FJePzrfA1VwSvcBUkKQlG6Vk/7V" >> ~/.ssh/known_hosts
+          echo "almostimplemented.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMrE5Ze2CjkQoXTt7FJePzrfA1VwSvcBUkKQlG6Vk/7V" >> ~/.ssh/known_hosts
 
       - name: Deploy
         if: env.skip != 'true'
