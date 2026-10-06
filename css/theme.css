@@ -30,3 +30,13 @@ body {
 .featured { background: #f5f5f5; border-radius: 6px; padding: 18px 18px 6px; margin-bottom: 28px; }
 .featured h3 { margin-top: 0; }
 
+
+/* Body copy below the nav (home, music) */
+.prose { max-width: 760px; margin-left: 0; margin-top: 18px; }
+.prose p { font-size: 18px; font-weight: 300; line-height: 1.55; margin-bottom: 14px; }
+.prose p:last-child { margin-bottom: 0; }
+
+/* Portrait (4:5) video at phone width */
+.portrait-video { position: relative; width: 100%; max-width: 400px; margin-top: 22px; background: #000; border-radius: 4px; overflow: hidden; }
+.portrait-video::before { content: ""; display: block; padding-top: 125%; }
+.portrait-video iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
