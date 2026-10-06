@@ -9,20 +9,4 @@ Personal site for Drew Edwards. Plain static HTML, Bootstrap 3 from CDN, no buil
 
 ## Deploy
 
-The site is served by nginx on a DigitalOcean droplet. `./deploy.sh` rsyncs the working tree there over one SSH connection:
-
-```
-./deploy.sh                                   # reads the docroot from nginx config
-./deploy.sh --password                        # skip SSH keys, prompt for a password once
-./deploy.sh root@almostimplemented.com /path  # or say user and docroot explicitly
-```
-
-## Continuous deploy
-
-`.github/workflows/deploy.yml` runs `deploy.sh` on every push to `master`. It needs repo secrets:
-
-- `DEPLOY_SSH_KEY`: private half of a key whose public half is in `~/.ssh/authorized_keys` on the droplet
-- `DEPLOY_USER`: the login on the droplet
-- `DEPLOY_PATH`: the nginx docroot (optional; the script reads it from nginx config if unset)
-
-The server's host key is pinned in the workflow. If the droplet is rebuilt, update that line.
+Hosted on Vercel (project `web`). Every push to `master` deploys to almostimplemented.com; other branches get preview URLs. `vercel.json` holds clean URLs, cache headers, and redirects for removed pages. DNS for the domain lives at DigitalOcean.
